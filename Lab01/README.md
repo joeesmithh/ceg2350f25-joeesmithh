@@ -45,10 +45,10 @@ My Command Line Shell is:
 ```
 Hello, world!
 ```
-10. Make a copy of `test.txt` named `copy.txt` in `DirA`:
-11. View the contents of `DirA`: 
-12. Make a copy of `test.txt` in `Dir B` named `fodder.txt`:
-13. Delete / remove both `fodder.txt` AND `Dir B`:
+10. Make a copy of `test.txt` named `copy.txt` in `DirA`: **Copy-Item test.txt copy.txt** or **cp test.txt copy.txt**
+11. View the contents of `DirA`: **Get-ChildItem DirA**
+12. Make a copy of `test.txt` in `Dir B` named `fodder.txt`: **Copy-Item test.txt ~\\'Dir B'\fodder.txt**
+13. Delete / remove both `fodder.txt` AND `Dir B`: **Remove-Item -Recurse ~\\'Dir B'**
 
 ## Citations
 
