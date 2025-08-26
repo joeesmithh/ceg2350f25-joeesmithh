@@ -13,14 +13,14 @@
 | ---     | ---         | ---    |
 | help    | man         | Outputs documentation and usage of subsequent command.       |
 | Get-Location | pwd    | Outputs the full path of the current working directory.       |
-| Get-ChildItem | ls    | Lists in the console unhidden files and directories.      |
-| mkdir   | mkdir       | Creates a folder in the current working directory.       |
-| Set-Location | cd     | Changes working directory to desired path.       |
-| New-Item | touch      | Creates a new file in desired working directory.       |
-| Move-Item | mv        |        |
-| Copy-Item | cp        |        |
-| Remove-Item | rm      |        |
-| notepad.exe | vim     |        |
+| Get-ChildItem | ls    | Outputs to the console a list of unhidden files and directories.      |
+| mkdir   | mkdir       | Creates a folder in desired directory.       |
+| Set-Location | cd     | Changes working directory to specified directory.       |
+| New-Item | touch      | Creates a new file in desired directory.       |
+| Move-Item | mv        | Relocates specified file into desired directory.       |
+| Copy-Item | cp        | Copies specified file into desired directory with specified file name.       |
+| Remove-Item | rm      | Deletes a single file or folder, non-recursively by default.       |
+| notepad.exe | vim     | Opens specified file in desired text editor.       |
 
 ## Part 3 - Command Line Navigation
 
