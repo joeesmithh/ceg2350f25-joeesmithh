@@ -14,7 +14,7 @@
 | help    | man         | Outputs documentation and usage of subsequent command.       |
 | Get-Location | pwd    | Outputs the full path of the current working directory.       |
 | Get-ChildItem | ls    | Lists in the console unhidden files and directories.      |
-| mkdir   | mkdir       |        |
+| mkdir   | mkdir       | Creates a folder in the current working directory.       |
 | Set-Location | cd     |        |
 | New-Item | touch      |        |
 | Move-Item | mv        |        |
