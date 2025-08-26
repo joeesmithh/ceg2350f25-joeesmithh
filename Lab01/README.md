@@ -13,7 +13,7 @@
 | ---     | ---         | ---    |
 | help    | man         | Outputs documentation and usage of subsequent command.       |
 | Get-Location | pwd    | Outputs the full path of the current working directory.       |
-| Get-ChildItem | ls    |        |
+| Get-ChildItem | ls    | Lists in the console unhidden files and directories.      |
 | mkdir   | mkdir       |        |
 | Set-Location | cd     |        |
 | New-Item | touch      |        |
