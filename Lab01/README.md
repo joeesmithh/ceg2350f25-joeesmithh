@@ -15,7 +15,7 @@
 | Get-Location | pwd    | Outputs the full path of the current working directory.       |
 | Get-ChildItem | ls    | Lists in the console unhidden files and directories.      |
 | mkdir   | mkdir       | Creates a folder in the current working directory.       |
-| Set-Location | cd     |        |
+| Set-Location | cd     | Changes working directory to desired path.       |
 | New-Item | touch      |        |
 | Move-Item | mv        |        |
 | Copy-Item | cp        |        |
