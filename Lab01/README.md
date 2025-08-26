@@ -16,7 +16,7 @@
 | Get-ChildItem | ls    | Lists in the console unhidden files and directories.      |
 | mkdir   | mkdir       | Creates a folder in the current working directory.       |
 | Set-Location | cd     | Changes working directory to desired path.       |
-| New-Item | touch      |        |
+| New-Item | touch      | Creates a new file in desired working directory.       |
 | Move-Item | mv        |        |
 | Copy-Item | cp        |        |
 | Remove-Item | rm      |        |
