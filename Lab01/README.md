@@ -33,17 +33,17 @@ My Command Line Shell is:
 
 ### Navigating My OS on the Command Line
 
-1. Full / absolute path to your user's home directory:
-2. Create a directory named `DirA`:
-3. Create a directory named `Dir B`:
-4. Go into `DirA`:
-5. Go into `Dir B` from `DirA`:
-6. Return to your user's home directory:
-7. Create a file named `test.txt`:
-8. Move the file named `test.txt` into `DirA`:
+1. Full / absolute path to your user's home directory: **C:\Users\josmt**
+2. Create a directory named `DirA`: **mkdir DirA**
+3. Create a directory named `Dir B`: **mkdir 'Dir B'**
+4. Go into `DirA`: **Set-Location DirA** or **cd DirA**
+5. Go into `Dir B` from `DirA`: **Set-Location 'Dir B'** or **cd 'Dir B'**
+6. Return to your user's home directory: **Set-Location ~** or **cd ~**
+7. Create a file named `test.txt`: **New-Item test.txt** or **touch test.txt**
+8. Move the file named `test.txt` into `DirA`: **Move-Item test.txt DirA** or **mv test.txt DirA**
 9. Contents of `test.txt`:
 ```
-Put your words here
+Hello, world!
 ```
 10. Make a copy of `test.txt` named `copy.txt` in `DirA`:
 11. View the contents of `DirA`: 
