@@ -1,11 +1,11 @@
 ﻿## Lab 01
 
-- Name:
-- Email:
+- Name: Joseph Smith
+- Email: smith.3289@wright.edu
 
 ## Part 1 - GitHub Profile
 
-1. [your_github_username_here's GitHub Profile](FIXTHISURL-https://github.com/your_username)
+- [joeesmithh's GitHub Profile](https://github.com/joeesmithh)
 
 ## Part 2 - Research
 
