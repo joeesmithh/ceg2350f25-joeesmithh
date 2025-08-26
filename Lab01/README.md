@@ -12,7 +12,7 @@
 | Windows | Linux / Mac | Action |
 | ---     | ---         | ---    |
 | help    | man         | Outputs documentation and usage of subsequent command.       |
-| Get-Location | pwd    |        |
+| Get-Location | pwd    | Outputs the full path of the current working directory.       |
 | Get-ChildItem | ls    |        |
 | mkdir   | mkdir       |        |
 | Set-Location | cd     |        |
