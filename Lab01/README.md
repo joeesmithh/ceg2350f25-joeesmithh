@@ -26,8 +26,8 @@
 
 My OS is:
 - [x] Windows
-- [] Linux
-- [] Mac
+- [ ] Linux
+- [ ] Mac
 
 My Command Line Shell is: 
 
