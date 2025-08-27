@@ -49,7 +49,3 @@ Hello, world!
 11. View the contents of `DirA`: **Get-ChildItem DirA**
 12. Make a copy of `test.txt` in `Dir B` named `fodder.txt`: **Copy-Item DirA\test.txt 'Dir B'\fodder.txt**
 13. Delete / remove both `fodder.txt` AND `Dir B`: **Remove-Item -Recurse 'Dir B'**
-
-## Citations
-
-To add citations, provide the site and a summary of what it assisted you with.  If generative AI was used, include which generative AI system was used and what prompt(s) you fed it.
