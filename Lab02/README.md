@@ -18,20 +18,20 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 ## Part 2 Answers
 
 1. `chmod u+r bubbles.txt`
-    - Means: 
-    - Assessment:
+    - **Means:** For bubbles.txt, allows the owner/user to read and copy the contents of the file. Existing permissions for group and others remain unchanged.
+    - **Assessment:** Almost necessary in order to work with files in any capacity.
 2. `chmod u=rw,g-w,o-x banana.cabana`
-    - Means: 
-    - Assessment:
+    - **Means:** For file banana.cabana, allows the owner/user to read and write without the ability to execute, removes the ability for the group to write, and removes the ability for others to execute. Existing permission for group and others remains unchanged.
+    - **Assessment:** Seems safe. The user can read and write, though the group may be able to read or execute, and others may be able to read or write.
 3. `chmod a=w snow.md`
-    - Means: 
-    - Assessment:
+    - **Means:** For snow.md, allows the owner/user, group, and others to write with no ability to read or execute.
+    - **Assessment:** Doesn't make a lot of sense. Write permission allows one only to append to the file from the console using stream insertion operators without the ability to read from it.
 4. `chmod 751 program`
-    - Means: 
-    - Assessment:
+    - **Means:** For program file (or directory), allows the owner/user to read, write, and execute, allows the group to read and execute, and allows others to execute.
+    - **Assessment:** 
 5. `chmod -R ug+w share`
-    - Means: 
-    - Assessment:
+    - **Means:** 
+    - **Assessment:**
 
 ## Part 3 Answers
 
