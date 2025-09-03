@@ -27,11 +27,11 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     - **Means:** For snow.md, allows the owner/user, group, and others to write with no ability to read or execute.
     - **Assessment:** Doesn't make a lot of sense. Write permission allows one only to append to the file from the console using stream insertion operators without the ability to read from it.
 4. `chmod 751 program`
-    - **Means:** For program file (or directory), allows the owner/user to read, write, and execute, allows the group to read and execute, and allows others to execute.
-    - **Assessment:** 
+    - **Means:** For program, allows the owner/user to read, write, and execute, allows the group to read and execute, and allows others to execute.
+    - **Assessment:** This seems to be a good use case for setting file permissions, if the file is indeed a program. Only the owner can write, however those in the group are only allowed to read the contents of and execute the program, while others are able only to run the program.
 5. `chmod -R ug+w share`
-    - **Means:** 
-    - **Assessment:**
+    - **Means:** Assuming 'share' is a directory for which the `-R` tag would make sense, this gives both the owner/user and the group write access to every file within the directory and recursive subdirectories of the 'share' folder.
+    - **Assessment:** Setting permissions here would make sense for some sort of group project, where the owner and the group both require the ability to write to all files in the root project folder.
 
 ## Part 3 Answers
 
