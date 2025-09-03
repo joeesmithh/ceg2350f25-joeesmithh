@@ -5,11 +5,14 @@
 
 ## Part 1 Answers
 
-Full / absolute path to your private key file: 
-
-Command to SSH to AWS instance:
+Full / absolute path to your private key file (**Using WSL2**):
+```bash
+/home/joeesmithh@JosephLaptop/scripts/labsuser.pem
 ```
-[Place your ssh command here]
+
+Command to SSH to AWS instance (**from scripts directory**):
+```bash
+ssh -i ./labsuser.pem ubuntu@44.209.209.133
 ```
 
 ## Part 2 Answers
