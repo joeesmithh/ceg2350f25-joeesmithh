@@ -134,23 +134,42 @@ For each, write the command used or answer the question posed.
     ```
 4. Which account can do what actions? (Type Y or N in columns)
 
-Contents inside of `share`
-| Account   | Can View  | Can Edit  | Can Change Permissions    |
-| ---       | ---       | ---       | ---                       |
-| `root`    |           |           |                           |
-| `ubuntu`  |           |           |                           |
-| `jsmith`     |           |           |                           |
+    Contents inside of `share`
+    | Account   | Can View  | Can Edit  | Can Change Permissions    |
+    | ---       | ---       | ---       | ---                       |
+    | `root`    | Y          |    Y       |          Y                 |
+    | `ubuntu`  |     Y      |     Y      |            Y               |
+    | `jsmith`     |     Y      |    Y       |           N                |
 
-`madewithsudo.txt`
-| Account   | Can View  | Can Edit  | Can Change Permissions    |
-| ---       | ---       | ---       | ---                       |
-| `root`    |           |           |                           |
-| `ubuntu`  |           |           |                           |
-| `BOB`     |           |           |                           |
+    `madewithsudo.txt`
+    | Account   | Can View  | Can Edit  | Can Change Permissions    |
+    | ---       | ---       | ---       | ---                       |
+    | `root`    |      Y     |      Y     |              Y             |
+    | `ubuntu`  |       Y    |      N (not without `sudo` prefix)     |         N (not without `sudo` prefix)                  |
+    | `jsmith`     |      Y     |    N       |            N               |
 
 5. Command(s) to modify permissions:
+    
+    First switch back to **ubuntu** user with `exit`
+    ```bash
+    sudo chown ubuntu:squad madewithsudo.txt # modify ownership of file as super user
+    chmod u=rw,g=rw madewithsudo.txt # ubuntu user and squad group can read and edit the file
+    ```
 6. How to give user account `sudo`:
+    
+    **jsmith** cannot use `sudo` because they are not in the `sudo` group, whereas **ubuntu** is, but we can change that...
+    ```bash
+    sudo usermod -aG sudo jsmith
+    ```
 
 ## Citations
 
 To add citations, provide the site and a summary of what it assisted you with.  If generative AI was used, include which generative AI system was used and what prompt(s) you fed it.
+
+[Understanding Linux File Permissions](https://linuxize.com/post/understanding-linux-file-permissions/): contributed to understanding of interpreting `ls -lah`.
+
+[How to create, delete, and modify groups in Linux](https://www.redhat.com/en/blog/linux-groups): contributed to understanding of creating and adding users to groups.
+
+[How to Change File Ownership in Linux | chown Command](https://www.geeksforgeeks.org/linux-unix/chown-command-in-linux-with-examples/): contributed to understanding of changing user and group file ownership.
+
+[Linux command line basics: sudo](https://www.redhat.com/en/blog/sudo): contributed to understanding of how sudo access relates to the root user.
