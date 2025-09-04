@@ -82,8 +82,8 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     ```
 3. Command(s) to allow `squad` to view the `ubuntu` user's home directory contents:
     ```bash
-    sudo chown :squad /home/ubuntu # change the group associated with share directory
-    chmod g=x /home/ubuntu # allow group to view contents of directory
+    sudo chown :squad /home/ubuntu # change the group associated with ubuntu home directory
+    chmod g=x /home/ubuntu # allow group to view contents of ubuntu home directory
     ```
 4. Command(s) to modify `share` to have group ownership of `squad`:
     ```bash
