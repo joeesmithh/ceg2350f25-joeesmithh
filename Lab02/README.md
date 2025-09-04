@@ -37,20 +37,20 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 
 1. Command to create new user:
     ```bash
-    sudo adduser phillip
+    sudo adduser jsmith
     ```
 2. Path to new user's home directory:
     ```bash
-    /home/phillip
+    /home/jsmith
     ```
 3. Evaluate if `ubuntu` can add files to new user's home directory:
     ```bash
-    touch /home/phillip/test.txt
-    # touch: cannot touch '/home/phillip/test.txt': Permission denied
+    touch /home/jsmith/test.txt
+    # touch: cannot touch '/home/jsmith/test.txt': Permission denied
     ```
 4. Command to switch to new user:
     ```bash
-    su phillip
+    su jsmith
     ```
 5. Command(s) to go to new user's home directory:
     ```bash
@@ -62,7 +62,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     ```
 7. Command to return to `ubuntu` user:
     ```bash
-    exit # This is the only command that worked before giving phillip sudo access
+    exit # This is the only command that worked before giving jsmith sudo access
     ```
 8. Command to return to `ubuntu` home directory:
     ```bash
@@ -78,7 +78,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 2. Command(s) to add `ubuntu` & user to group `squad`:
     ```bash
     sudo usermod -aG squad ubuntu
-    sudo usermod -aG squad phillip
+    sudo usermod -aG squad jsmith
     ```
 3. Command(s) to allow `squad` to view the `ubuntu` user's home directory contents:
     ```bash
@@ -92,19 +92,19 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     ```
 5. Describe your tests and commands with the user account:
     ```bash
-    su phillip # switch to phillip
-    ls /home/ubuntu # phillip can now view contents, wheras he wasn't able to before
-    touch /home/ubuntu/test.txt # phillip cannot create files within ubuntu
-    touch /home/ubuntu/share/test.txt # phillip cannot create files in share this way
+    su jsmith # switch to jsmith
+    ls /home/ubuntu # jsmith can now view contents, wheras he wasn't able to before
+    touch /home/ubuntu/test.txt # jsmith cannot create files within ubuntu
+    touch /home/ubuntu/share/test.txt # jsmith cannot create files in share this way
     cd /home/ubuntu/share
-    touch test.txt # phillip can create files while in shared directory
+    touch test.txt # jsmith can create files while in shared directory
     ```
 6. Describe the full set of permissions / settings that enable the user to make edits:
     ```bash
     # ubuntu@ceg2350-sandbox:~$
     sudo addgroup squad # we create a new group
     sudo usermod -aG squad ubuntu # we add a sudo user and a non sudo user to the group
-    sudo usermod -aG squad phillip
+    sudo usermod -aG squad jsmith
     sudo chown :squad /home/ubuntu # we assign new group ownership of sudo user home folder
     chmod g=x /home/ubuntu # we give execute permissions to the owning group of sudo user's home
     sudo chown :squad /home/ubuntu/share # assign new group ownership of share filder
