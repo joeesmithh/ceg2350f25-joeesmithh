@@ -90,7 +90,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 4. Command(s) to modify `share` to have group ownership of `squad`:
     ```bash
     sudo chown :squad /home/ubuntu/share # change the group associated with share directory
-    chmod -R 070 /home/ubuntu/share # the group now has full permission of the directory and everything in it
+    chmod -R 770 /home/ubuntu/share # ubuntu and group now have full permission of the directory and everything in it
     ```
 5. Describe your tests and commands with the user account:
     ```bash
@@ -110,7 +110,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     sudo chown :squad /home/ubuntu # we assign new group ownership of sudo user home folder
     chmod g=x /home/ubuntu # we give execute permissions to the owning group of sudo user's home
     sudo chown :squad /home/ubuntu/share # assign new group ownership of share filder
-    chmod -R 070 /home/ubuntu/share # give group read, write, execute permission for share folder
+    chmod -R 770 /home/ubuntu/share # give ubuntu and group read, write, execute permission for share folder
 
     # members of the new group can now read, edit, and create files within the share folder
     ```
