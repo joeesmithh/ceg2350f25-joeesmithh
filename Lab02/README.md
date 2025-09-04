@@ -119,8 +119,19 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 For each, write the command used or answer the question posed.
 
 1. Command(s) to make file using `sudo`: 
+    ```bash
+    sudo touch madewithsudo.txt
+    ```
 2. Command(s) to make file with `root`:
+    ```bash
+    sudo su root # switch to root user
+    touch madewithroot.txt
+    ```
 3. Describe / compare ownership and permissions of files:
+    ```
+    The root user and root group own both files.
+    For both files, the owner can read and write, those in the root group can read, and others can read from the files.
+    ```
 4. Which account can do what actions? (Type Y or N in columns)
 
 Contents inside of `share`
@@ -128,7 +139,7 @@ Contents inside of `share`
 | ---       | ---       | ---       | ---                       |
 | `root`    |           |           |                           |
 | `ubuntu`  |           |           |                           |
-| `BOB`     |           |           |                           |
+| `jsmith`     |           |           |                           |
 
 `madewithsudo.txt`
 | Account   | Can View  | Can Edit  | Can Change Permissions    |
