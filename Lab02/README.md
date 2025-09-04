@@ -48,6 +48,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     touch /home/jsmith/test.txt
     # touch: cannot touch '/home/jsmith/test.txt': Permission denied
     ```
+    Without the sudo prefix, the ubuntu user does not have write access to jsmth's home directory.
 4. Command to switch to new user:
     ```bash
     su jsmith
@@ -60,6 +61,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     ```bash
     touch test.txt # successful
     ```
+    Now that we are now jsmth, we can read, write, and execute, thus having the ability to create new files.
 7. Command to return to `ubuntu` user:
     ```bash
     exit # This is the only command that worked before giving jsmith sudo access
@@ -88,7 +90,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 4. Command(s) to modify `share` to have group ownership of `squad`:
     ```bash
     sudo chown :squad /home/ubuntu/share # change the group associated with share directory
-    chmod 070 /home/ubuntu/share # the group is now the sole owner of share directory
+    chmod -R 070 /home/ubuntu/share # the group now has full permission of the directory and everything in it
     ```
 5. Describe your tests and commands with the user account:
     ```bash
@@ -108,7 +110,7 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     sudo chown :squad /home/ubuntu # we assign new group ownership of sudo user home folder
     chmod g=x /home/ubuntu # we give execute permissions to the owning group of sudo user's home
     sudo chown :squad /home/ubuntu/share # assign new group ownership of share filder
-    chmod 070 /home/ubuntu/share # give group read, write, execute permission for share folder
+    chmod -R 070 /home/ubuntu/share # give group read, write, execute permission for share folder
 
     # members of the new group can now read, edit, and create files within the share folder
     ```
