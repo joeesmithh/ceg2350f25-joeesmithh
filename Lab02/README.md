@@ -35,14 +35,41 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 
 ## Part 3 Answers
 
-1. Command to create new user: 
-2. Path to new user's home directory: 
+1. Command to create new user:
+    ```bash
+    sudo adduser phillip
+    ```
+2. Path to new user's home directory:
+    ```bash
+    /home/phillip
+    ```
 3. Evaluate if `ubuntu` can add files to new user's home directory:
+    ```bash
+    touch /home/phillip/test.txt
+    # touch: cannot touch '/home/phillip/test.txt': Permission denied
+    ```
 4. Command to switch to new user:
+    ```bash
+    su phillip
+    ```
 5. Command(s) to go to new user's home directory:
+    ```bash
+    cd ~
+    ```
 6. Evaluate if new user can add files to user's home directory:
+    ```bash
+    touch test.txt
+    # Successful
+    ```
 7. Command to return to `ubuntu` user:
-8. Command to return to `ubuntu` home directory: 
+    ```bash
+    exit # This is the only command that worked before giving phillip sudo access
+    sudo su ubuntu # After giving phillip sudo access
+    ```
+8. Command to return to `ubuntu` home directory:
+    ```bash
+    cd ~
+    ```
 
 ## Part 4 Answers
 
