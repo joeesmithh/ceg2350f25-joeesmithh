@@ -58,13 +58,11 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
     ```
 6. Evaluate if new user can add files to user's home directory:
     ```bash
-    touch test.txt
-    # Successful
+    touch test.txt # successful
     ```
 7. Command to return to `ubuntu` user:
     ```bash
     exit # This is the only command that worked before giving phillip sudo access
-    sudo su ubuntu # After giving phillip sudo access
     ```
 8. Command to return to `ubuntu` home directory:
     ```bash
@@ -74,12 +72,46 @@ ssh -i ./labsuser.pem ubuntu@44.209.209.133
 ## Part 4 Answers
 
 1. Command(s) to create group named `squad` and add members:
+    ```bash
+    sudo addgroup squad
+    ```
 2. Command(s) to add `ubuntu` & user to group `squad`:
+    ```bash
+    sudo usermod -aG squad ubuntu
+    sudo usermod -aG squad phillip
+    ```
 3. Command(s) to allow `squad` to view the `ubuntu` user's home directory contents:
+    ```bash
+    sudo chown :squad /home/ubuntu # change the group associated with share directory
+    chmod g=x /home/ubuntu # allow group to view contents of directory
+    ```
 4. Command(s) to modify `share` to have group ownership of `squad`:
+    ```bash
+    sudo chown :squad /home/ubuntu/share # change the group associated with share directory
+    chmod 070 /home/ubuntu/share # the group is now the sole owner of share directory
+    ```
 5. Describe your tests and commands with the user account:
+    ```bash
+    su phillip # switch to phillip
+    ls /home/ubuntu # phillip can now view contents, wheras he wasn't able to before
+    touch /home/ubuntu/test.txt # phillip cannot create files within ubuntu
+    touch /home/ubuntu/share/test.txt # phillip cannot create files in share this way
+    cd /home/ubuntu/share
+    touch test.txt # phillip can create files while in shared directory
+    ```
 6. Describe the full set of permissions / settings that enable the user to make edits:
+    ```bash
+    # ubuntu@ceg2350-sandbox:~$
+    sudo addgroup squad # we create a new group
+    sudo usermod -aG squad ubuntu # we add a sudo user and a non sudo user to the group
+    sudo usermod -aG squad phillip
+    sudo chown :squad /home/ubuntu # we assign new group ownership of sudo user home folder
+    chmod g=x /home/ubuntu # we give execute permissions to the owning group of sudo user's home
+    sudo chown :squad /home/ubuntu/share # assign new group ownership of share filder
+    chmod 070 /home/ubuntu/share # give group read, write, execute permission for share folder
 
+    # members of the new group can now read, edit, and create files within the share folder
+    ```
 ## Part 5 Answers
 
 For each, write the command used or answer the question posed.
