@@ -44,9 +44,13 @@
 ## Part 3 - IO Redirection
 
 1. `printenv HOME > thishouse`
-   - Explanation: 
+   - Explanation:
+
+        Generates standard output text stream containing the value of the `HOME` environment variable (path to the current user's home directory) and redirects it to the `thishouse` file. Overwrites any existing text, but creates the file if it doesn't already exist. The `thishouse` file now contains the text "/home/ubuntu."
 2. `cat doesnotexist 2>> hush.txt`
    - Explanation: 
+    1. **First case**: Redirects and appends generated standard error text stream to `hush.txt` file if `doesnotexist` file does not exist, also creating `hush.txt` if it does not exists. In this case, `hush.txt` contains "cat: doesnotexist: No such file or directory."
+    2. **Second case**: Outputs to the console generated standard output text stream containing the contents of `doesnotexist` if the file exists. Creates `hush.txt` file if it does not exist. `hush.txt` contains nothing.
 3. `cat nums.txt | sort -n >> all_nums.txt`
    - Explanation: 
 4. `cat << "DONE" > here.txt`
