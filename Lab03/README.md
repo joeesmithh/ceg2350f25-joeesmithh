@@ -17,9 +17,29 @@
 ## Part 2 - clone
 
 1. Command to generate an SSH key with ed25519:
+    ```bash
+    ssh-keygen -t ed25519 -C "josmth3030@gmail.com"
+    ```
 2. Command(s) to read & copy text of the *public* key:
-3. Summary of steps to place *public* key in user profile: 
+    ```bash
+    cat ~/.ssh/id_ed25519.pub #or, install xclip with sudo apt install xclip
+    xclip -selection clipboard ~/.ssh/id_ed25519.pub # copies the contents of the key file to the clipboard
+    ```
+3. Summary of steps to place *public* key in user profile:
+    <ol>
+        <li>Copy contents of public key file in terminal using <code>cat ~/.ssh/id_ed25519.pub</code> or <code>xclip -selection clipboard ~/.ssh/id_ed25519</code></li>
+        <li>Open github.com and click profile icon in top right, click <code>Settings</code></li>
+        <li>Click <code>SSH and GPG keys</code> in side menu</li>
+        <li>Click <code>New SSH key</code> button</li>
+        <li>Give the key a title and paste to copied key to the <code>Key</code> input box</li>
+        <li>Click <code>Add SSH key</code> button</li>
+        <li>You can now push to and pull from your github repositories!</li>
+    </ol>
+
 4. Command to *clone* your `ceg2350s25-YOURGITHUBUSERNAME` with SSH for authentication: 
+    ```bash
+    git clone git@github.com:WSU-kduncan/ceg2350f25-joeesmithh.git
+    ```
 
 ## Part 3 - IO Redirection
 
