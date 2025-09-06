@@ -7,12 +7,12 @@
 
 | git command         | Description |
 | ---                 | ---         | 
-| `git clone repo_URI`|             |
-| `git status`        |             |
-| `git add filename`  |             |
-| `git commit`        |             |
-| `git push`          |             |
-| `git pull`          |             |
+| `git clone repo_URI`|     Clones an existing github repository as a directory within the current directory, automatically initializing a remote `origin` branch to `main`.       |
+| `git status`        |     Outputs to the console files with unstaged changes in red and files with staged changes in green.       |
+| `git add filename`  |     Adds `filename` to the staging area, i.e., prepares the file to be committed.        |
+| `git commit`        |     Opens globally configurated text editor to create a commit message. When editor is closed, commits(saves) all files in the staging area to commit history.        |
+| `git push`          |     Syncs the local branch and all its commits to the default remote branch on github. In our case, `origin`(remote) `main`(branch).        |
+| `git pull`          |     Syncs the default remote branch to the local branch. If the commit history doesn't match, we might have to address merge conflicts and create a merge commit. |
 
 ## Part 2 - clone
 
