@@ -1,7 +1,7 @@
 ## Lab 03
 
-- Name:
-- Email: 
+- Name: Joseph Smith
+- Email: smith.3289@wright.edu
 
 ## Part 1 - git Guide
 
