@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+input=$1
+
+# If no first argument given
+if [ -z $input ]
+then
+	# Read input from user
+	read -p "Input the number of rolls: " input
+fi
+
+# Validate positive integer input
+while [[ ! $input =~ ^[1-9][0-9]+$ ]]; do
+	read -p "Not a positive integer. Try again: " input
+done
+
+echo $input
