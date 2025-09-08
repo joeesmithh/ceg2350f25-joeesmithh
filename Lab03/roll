@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
-input=$1
+dice=$1
+sides=$2
 
-# If no first argument given
-if [ -z $input ]
+# If not two arguments
+if [ ! $# == 2 ] 
 then
-	# Read input from user
-	read -p "Input the number of rolls: " input
+	# Prompt for input
+	read -p "Input # dice to roll: " dice
+	read -p "Input # dice   sides: " sides
 fi
 
-# Validate positive integer input
-while [[ ! $input =~ ^[1-9][0-9]+$ ]]; do
-	read -p "Not a positive integer. Try again: " input
+# Validate positive integer inputs
+while [[ ! $dice =~ ^[1-9][0-9]*$ ]]; do
+	read -p "Invalid dice  count! Not a positive integer. Try again: " dice
 done
 
-echo $input
+while [[ ! $sides =~ ^[1-9][0-9]*$ ]]; do
+	read -p "Invalid sides count! Not a positive integer. Try again: " sides
+done
