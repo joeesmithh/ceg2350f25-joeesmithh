@@ -67,16 +67,16 @@ Verify that `roll` made it to your GitHub repository for this course and is in y
 ## Part 5 - Retrospective Answers
 
 1. Where and when did it go wrong while working on your script tasks?
-> Your reflection here
+    > There was a portion of the development where I couldn't get the input validation working in the way I wanted to, but eventually regular expressions came to save the day.
 2. Was anything familiar working with a new language compared to one you are used to?
-> Your reflection here
+    > Writing in bash reminded me a lot of writing AutoHotkey scripts, which is also very ambiguous when it comes to variable declarations.
 3. Did you write good `commit` messages that refer to what tasks were completed at each commit?  What would you improve?
-> Your reflection here
+    > I tried to write commit messages following every major feature implementation, though I'm not very good at remembering to write detailed descriptions under the main commit messages.
 
 ## Extra Credit
 
-1. Note here *what* you did to the script for the extra credit.
+1. One extra feature I added was handling the case where one argument was given by assigning the argument to the number of dice, but still prompting the user for the number of dice sides. I also handled the case where too many arguments were given by using the first two arguments as the number of dice and sides.
 
 ## Citations
 
-To add citations, provide the site and a summary of what it assisted you with.  If generative AI was used, include which generative AI system was used and what prompt(s) you fed it.  Generative AI may not write your script for you, only assist with component and how to type questions.
+[Bash Regex: How to Use Regex in a Shell Script](https://kodekloud.com/blog/regex-shell-script/): Contributed to understanding of how to use regular expressions to validate strings within if statements.
