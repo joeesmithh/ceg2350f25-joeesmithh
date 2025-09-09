@@ -11,6 +11,7 @@ while [[ ! $input =~ ^[1-9][0-9]*$ ]]; do
 	read -p "Invalid input! Must be a positive integer. Try again: " input
 done
 
+
 random_number=$((1 + RANDOM % $input))
 echo "You rolled a $random_number"
 
