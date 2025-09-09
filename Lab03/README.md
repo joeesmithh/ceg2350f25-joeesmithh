@@ -71,7 +71,7 @@ Verify that `roll` made it to your GitHub repository for this course and is in y
 2. Was anything familiar working with a new language compared to one you are used to?
     > Writing in bash reminded me a lot of writing AutoHotkey scripts, which is also very ambiguous when it comes to variable declarations.
 3. Did you write good `commit` messages that refer to what tasks were completed at each commit?  What would you improve?
-    > I tried to write commit messages following every major feature implementation, though I'm not very good at remembering to write detailed descriptions under the main commit messages.
+    > I tried to write commit messages following every major feature implementation, though I had to go back and complete the actual steps in order as I had finished the script before reading the rubric 😔
 
 ## Extra Credit
 
