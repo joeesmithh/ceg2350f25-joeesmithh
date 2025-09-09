@@ -1,17 +1,38 @@
-# read -p "Roll a random number between 1 and your positive integer: " input
+#!/usr/bin/env bash
 
-input=$1
+dice=$1
+sides=$2
 
-if [ $# != 1 ]
+if [ $# -gt 2 ]
 then
-	read -p "Invalid argument count! One positive integer argument must be given: " input
+	echo "Too many arguments! Will try $1 and $2 for # dice and # sides, respectively."
 fi
 
-while [[ ! $input =~ ^[1-9][0-9]*$ ]]; do
-	read -p "Invalid input! Must be a positive integer. Try again: " input
+# If not two arguments
+if [ $# -lt 2 ] 
+then
+	# Prompt for input
+	if [ $# -lt 1 ]
+	then
+		# If no first argument
+		read -p "Input # dice to roll: " dice
+	else
+		echo "Too few arguments! Will try $1 for # dice."
+	fi
+	read -p "Input # sides per die: " sides
+fi
+
+# Validate positive integer inputs
+while [[ ! $dice =~ ^[1-9][0-9]*$ ]]; do
+	read -p "Dice # must be a positive integer. Try again: " dice
 done
 
+while [[ ! $sides =~ ^[1-9][0-9]*$ ]]; do
+	read -p "Sides # must be a positive integer. Try again: " sides
+done
 
-random_number=$((1 + RANDOM % $input))
-echo "You rolled a $random_number"
-
+# Roll dice
+for(( i=1; i<=$dice; i++ )); do
+	random_num=$((1 + $RANDOM % $sides))
+	echo "Dice $i rolled a $random_num"
+done
