@@ -3,11 +3,22 @@
 dice=$1
 sides=$2
 
+if [ $# -gt 2 ]
+then
+	echo "Too many arguments! Will try $1 and $2 for # dice and # sides, respectively."
+fi
+
 # If not two arguments
-if [ ! $# == 2 ] 
+if [ $# -lt 2 ] 
 then
 	# Prompt for input
-	read -p "Input # dice to roll: " dice
+	if [ $# -lt 1 ]
+	then
+		# If no first argument
+		read -p "Input # dice to roll: " dice
+	else
+		echo "Too few arguments! Will try $1 for # dice."
+	fi
 	read -p "Input # sides per die: " sides
 fi
 
