@@ -1,21 +1,16 @@
 # read -p "Roll a random number between 1 and your positive integer: " input
 
-if [ $# == 1 ]
-then
-	input=$1
+input=$1
 
-	if [[ $input =~ ^[1-9][0-9]*$ ]]
-	then
-		random_number=$((1 + RANDOM % $input))
-		echo "You rolled a $random_number"
-	else
-		echo "Invalid argument value! Argument must be positive integer."	
-	fi
-else
-	echo "Invalid argument count! One positive integer argument must be given."
+if [ $# != 1 ]
+then
+	read -p "Invalid argument count! One positive integer argument must be given: " input
 fi
 
-# while [[ ! $input =~ ^[1-9][0-9]*$ ]]; do
-#	read -p "Invalid input! Must be a positive integer. Try again: " input
-# done
+while [[ ! $input =~ ^[1-9][0-9]*$ ]]; do
+	read -p "Invalid input! Must be a positive integer. Try again: " input
+done
+
+random_number=$((1 + RANDOM % $input))
+echo "You rolled a $random_number"
 
