@@ -1,0 +1,3 @@
+random_number=$((1 + RANDOM % 20))
+
+echo "You rolled a $random_number"
