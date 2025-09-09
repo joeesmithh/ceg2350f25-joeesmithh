@@ -8,14 +8,20 @@ if [ ! $# == 2 ]
 then
 	# Prompt for input
 	read -p "Input # dice to roll: " dice
-	read -p "Input # dice   sides: " sides
+	read -p "Input # sides per die: " sides
 fi
 
 # Validate positive integer inputs
 while [[ ! $dice =~ ^[1-9][0-9]*$ ]]; do
-	read -p "Invalid dice  count! Not a positive integer. Try again: " dice
+	read -p "Dice # must be a positive integer. Try again: " dice
 done
 
 while [[ ! $sides =~ ^[1-9][0-9]*$ ]]; do
-	read -p "Invalid sides count! Not a positive integer. Try again: " sides
+	read -p "Sides # must be a positive integer. Try again: " sides
+done
+
+# Roll dice
+for(( i=1; i<=$dice; i++ )); do
+	random_num=$((1 + $RANDOM % $sides))
+	echo "Dice $i rolled a $random_num"
 done
