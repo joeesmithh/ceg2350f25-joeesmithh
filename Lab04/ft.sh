@@ -1,28 +1,68 @@
 #!/bin/bash
 
-arg1=$1
-action=""
+# ----------------- FUNCTION DEFS ----------------- #
 
-case $arg1 in
+# Add a record to finances
+add () {
+	return 1
+}
+
+# Remove a record to finances
+remove () {
+	return 2
+}
+
+# View all finance records
+view () {
+	return 3
+}
+
+# Clear all finance records
+clear () {
+	return 4
+}
+
+# Returns the user 'guide' string
+user-guide () {
+	local guide="This is the user guide."
+	echo "$guide" # Send guide string to stdout
+}
+
+# Output user guide to console
+help () {
+	echo "$(user-guide)"
+}
+
+# -------------------- PROGRAM -------------------- #
+
+arg=$1
+
+# Validate first argument
+case $arg in
 
 	"add")
-	echo "add"
+	add
 	;;
 
 	"remove")
-	echo "remove"
+	remove
 	;;
 
 	"view")
-	echo "view"
+	view
 	;;
 
 	"clear")
-	echo "clear"
+	clear
 	;;
 
 	"help")
-	echo "help"
+	help
+	;;
+
+	*)
+	echo "Invalid argument!"
+	help
 	;;
 
 esac
