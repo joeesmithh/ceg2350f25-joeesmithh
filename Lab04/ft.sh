@@ -3,6 +3,7 @@
 # ---------------- GLOBAL VARIABLES --------------- #
 save_file="$HOME/.finances"
 save_path=$(realpath "$save_file")
+arg1=$1
 arg2=$2
 
 # ----------------- FUNCTION DEFS ----------------- #
@@ -92,10 +93,8 @@ help () {
 
 # -------------------- PROGRAM -------------------- #
 
-arg=$1
-
 # Validate first argument
-case $arg in
+case $arg1 in
 
 	"add")
 	add
