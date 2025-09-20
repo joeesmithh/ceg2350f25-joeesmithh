@@ -83,7 +83,8 @@ view () {
 
 # Clear all finance records
 clear () {
-	return 4
+	rm "$save_file"
+	echo "Removed $save_path"
 }
 
 # Output user guide to console
