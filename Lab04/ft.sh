@@ -78,7 +78,7 @@ remove () {
 
 # View all finance records
 view () {
-	return 3
+	cat "$save_path"
 }
 
 # Clear all finance records
