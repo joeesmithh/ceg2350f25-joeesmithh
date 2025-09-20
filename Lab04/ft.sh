@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# ---------------- GLOBAL VARIABLES --------------- #
+save_file="$HOME/.finances"
+arg2=$2
+
 # ----------------- FUNCTION DEFS ----------------- #
 
 # Returns the user 'guide' string
@@ -9,7 +13,6 @@ user-guide () {
 }
 
 # Validates and returns the user's second 'record' argument
-arg2=$2
 validate-record () {
 
 	# Loop while record is either empty or not of correct form.
@@ -32,10 +35,10 @@ validate-record () {
 add () {
 	# Validate and save record to file
 	record="$(validate-record)"
-	echo "$record" >> ~/.finance
+	echo "$record" >> "$save_file"
 
 	# Output save path
-	dir=$(realpath ~/.finance)
+	dir=$(realpath "$save_file")
 	printf "Saved \"%s\" to %s\n" "$record" "$dir"
 }
 
