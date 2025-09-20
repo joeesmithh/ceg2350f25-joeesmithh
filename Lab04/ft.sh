@@ -2,6 +2,7 @@
 
 # ---------------- GLOBAL VARIABLES --------------- #
 save_file="$HOME/.finances"
+save_path=$(realpath "$save_file")
 arg2=$2
 
 # ----------------- FUNCTION DEFS ----------------- #
@@ -12,10 +13,10 @@ user-guide () {
 	echo "$guide" # Send guide string to stdout
 }
 
-# Validates and returns the user's second 'record' argument
+# Validate and return user's second argument as record description and amount
 validate-record () {
 
-	# Loop while record is either empty or not of correct form.
+	# Loop while second argument is either empty or not of correct form.
 	#
 	# To validate record argument of form "RECORD {-}00{.00}":
 	# 			.*" "+  # Match one or more character before one or more space character
@@ -31,6 +32,19 @@ validate-record () {
 	echo "$arg2"
 }
 
+# Validate and return user's second argument as record description only
+validate-record-description () {
+
+	# Loop while second argument is empty
+	while [ -z "$arg2" ]; do
+		# Output error prompt and read new input
+		printf -v error "Empty record description!\nTry again (no quotes necessary): "
+		read -p "$error" arg2
+	done
+
+	echo "$arg2"
+}
+
 # Add a record to finances
 add () {
 	# Validate and save record to file
@@ -38,13 +52,27 @@ add () {
 	echo "$record" >> "$save_file"
 
 	# Output save path
-	dir=$(realpath "$save_file")
-	printf "Saved \"%s\" to %s\n" "$record" "$dir"
+	printf "Saved \"%s\" to %s\n" "$record" "$save_path"
 }
 
 # Remove a record to finances
 remove () {
-	return 2
+	# Validate whether a record description was given
+	record="$(validate-record-description)"
+
+	# If no matches in .finances
+	matching_lines=$(grep "$record" "$save_file")
+	if [ -z "$matching_lines" ]
+	then
+		printf "Remove unsuccessful! No records matching description \"%s.\"\n" "$record"
+	else
+		# Create string with lines of .finances not including those with record description
+		finances_no_record=$(grep -v "$record" "$save_file")
+
+		# Overwrite .finances file with new grep string
+		echo "$finances_no_record" > "$save_file"
+		printf "Removed \"%s\" from %s\n" "$matching_lines" "$save_path"
+	fi
 }
 
 # View all finance records
