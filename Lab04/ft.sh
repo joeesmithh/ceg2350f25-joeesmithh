@@ -8,29 +8,9 @@ user-guide () {
 	echo "$guide" # Send guide string to stdout
 }
 
-
-
-
-
-
-# McDonalds 32.95
-# McDonalds 32
-# McDonalds 0.95
-# McDonalds -32.95
-
-
-
-
-
-
-
-
-
-# Validates and returns the user's second record argument
+# Validates and returns the user's second 'record' argument
 arg2=$2
 validate-record () {
-
-	local record=$arg2
 
 	# Loop while record is either empty or not of correct form.
 	#
@@ -39,17 +19,24 @@ validate-record () {
 	# 			   \-?	# Negative sign optional
 	# 	   [0-9][1-9]*  # Match zero or more characters between 1-9 after a character 0-9
 	# (\.[0-9][1-9]*)?  # If optional decimal input, match zero or more 1-9 after 0-9
-	while [[ -z $record || ! $record =~ ^.+" "+\-?[0-9][1-9]*(\.[0-9][1-9]*)?$ ]]; do
-		read -p "Invalid record! Try again: " record
+	while [[ -z $arg2 || ! $arg2 =~ ^.+" "+\-?[0-9][1-9]*(\.[0-9][1-9]*)?$ ]]; do
+		# Output error prompt and read new input
+		printf -v error "Invalid record!\nTry again (no quotes necessary): "
+		read -p "$error" arg2
 	done
-	
-	echo "$record"
+
+	echo "$arg2"
 }
 
 # Add a record to finances
 add () {
+	# Validate and save record to file
 	record="$(validate-record)"
-	echo "$record"
+	echo "$record" >> ~/.finance
+
+	# Output save path
+	dir=$(realpath ~/.finance)
+	printf "Saved \"%s\" to %s\n" "$record" "$dir"
 }
 
 # Remove a record to finances
