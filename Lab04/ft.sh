@@ -23,7 +23,7 @@ validate-record () {
 	# 			   \-?	# Negative sign optional
 	# 	   [0-9][1-9]*  # Match zero or more characters between 1-9 after a character 0-9
 	# (\.[0-9][1-9]*)?  # If optional decimal input, match zero or more 1-9 after 0-9
-	while [[ -z $arg2 || ! $arg2 =~ ^.+" "+\-?[0-9][1-9]*(\.[0-9][1-9]*)?$ ]]; do
+	while [[ -z $arg2 || ! $arg2 =~ ^.+" "+\-?[0-9][1-9]*(\.[0-9][0-9]*)?$ ]]; do
 		# Output error prompt and read new input
 		printf -v error "Invalid record!\nTry again (no quotes necessary): "
 		read -p "$error" arg2
