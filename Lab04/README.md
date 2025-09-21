@@ -161,3 +161,10 @@ Note here *what* you did to the script for the extra credit and provide addition
 ## Citations
 
 To add citations, provide the site and a summary of what it assisted you with.  If generative AI was used, include which generative AI system was used and what prompt(s) you fed it.  Generative AI may not write your script for you, only assist with component and how to type questions.
+
+[Bash Functions](https://linuxize.com/post/bash-functions/): Contributed to understanding of Bash function syntax.<br>
+[Bash Case Statement](https://linuxize.com/post/bash-case-statement/): Contributed to understanding of Bash case statement syntax.<br>
+[Bash printf Command](https://linuxize.com/post/bash-printf-command/): Helped with some console output formatting.<br>
+[Bash grep Command - Search Text Using Patterns](https://www.w3schools.com/bash/bash_grep.php): Helped accomplish deleting lines from .finances file, though `sed` would have been simpler.<br>
+[How to Create Hard and Symbolic Links in Linux](https://www.tecmint.com/create-hard-and-symbolic-links-in-linux/): Contributed to understanding of the `ln` command syntax and hard links vs. symbolic links.<br>
+[Linux Foundation FHS for /usr/local](https://refspecs.linuxfoundation.org/FHS_3.0/fhs/ch04s09.html): Referenced to determine best place to create system-wide symbolic links.
