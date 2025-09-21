@@ -10,8 +10,40 @@ arg2=$2
 
 # Returns the user 'guide' string
 user-guide () {
-	local guide="This is the user guide."
-	echo "$guide" # Send guide string to stdout
+	echo "Usage: $(basename "$0") <ACTION> [RECORD]"
+	echo "This script allows the user to add, remove, view, or clear"
+	echo "finance records in the $save_path file."
+	echo ""
+	echo "Arguments:"
+	echo "  ACTION"
+	echo "          Required argument representing an action to perform on $save_path"
+	echo "          add [RECORD]    - Append RECORD to $save_path"
+	echo "                            Prompt for entry if no RECORD given"
+	echo "          remove [RECORD] - Remove lines matching RECORD pattern from $save_path"
+	echo "                            Prompt for entry if no RECORD given"
+	echo "          view            - View contents of $save_path"
+	echo "          clear           - Remove $save_path file"
+	echo "          help            - Output documentation"
+	echo ""
+	echo "  RECORD"
+	echo "          A finance record comprising a string followed by a floating-point value."
+	echo "          Optional for ACTION=add,remove"
+	echo "          For <remove>, the argument can be any non-zero string"
+	echo "          For <add>, the argument must be of form \"<STRING> [-]N+[.N+]\""
+	echo "            [] indicates an optional field"
+	echo "            N+ indicates 1 or more integer characters [0-9]"
+	echo ""
+	echo "Examples:"
+	echo "  $(basename "$0") add \"McDonald's -2.50\" - Add negative record"
+	echo "  $(basename "$0") add \"Paycheck 350\"     - Add positive record"
+	echo "  $(basename "$0") view                   - Output: "
+	echo "                                      McDonald's -2.50"
+	echo "                                      Paycheck 350"
+	echo "  $(basename "$0") remove Pay             - Remove \"Paycheck 350\" record"
+	echo "  $(basename "$0") remove 50              - Remove both records"
+	echo "  $(basename "$0") add                    - Prompt for record before addition"
+	echo "  $(basename "$0") remove                 - Prompt for record before removal"
+	echo "  $(basename "$0") clear                  - Delete $save_path file"
 }
 
 # Validate and return user's second argument as record description and amount
