@@ -13,7 +13,11 @@ Verify that `ft` made it to your GitHub repository for this course and is in you
 
 ## Part 2 - User Guide & Sample Runs
 
+<br>
+
 ### User Guide
+---
+This script allows the user to add, remove, view, or clear finance records in a `~/.finances` file.
 
 ### Usage
 ---
