@@ -15,44 +15,111 @@ Verify that `ft` made it to your GitHub repository for this course and is in you
 
 ### User Guide
 
-Fill in with your user guide here - make sure you are focusing on good *markdown* formatting
+### Usage
+---
+`ft <ACTION> [RECORD]`
+
+### Arguments
+---
+
+- **ACTION**: Required argument representing an action to perform on `~/.finances`.
+
+   |ACTION|Description|
+   |-----|-----|
+   |`add [RECORD]`|Append RECORD to `~/.finances`.<br>Prompt for entry if no RECORD given.|
+   |`remove [RECORD]`|Remove lines from `~/.finances` matching RECORD string pattern.<br>Prompt for entry if no RECORD given.|
+   |`view`|View contents of `~/.finances`.|
+   |`clear`|Remove `~/.finances` file.|
+   |`help`|Output documentation.|
+
+- **RECORD**: A finance record comprising a string followed by a floating-point value.
+   - Optional for **ACTION**=**add**,**remove**.
+   - Unnecessary for **ACTION**=**view**,**clear**,**help**
+
+   |RECORD|Description|
+   |-----|-----|
+   |For **ACTION**=`add [RECORD]`|RECORD must be of form `<STRING> [-]N+[.N+]`<br>**[]** indicates an optional field<br>**N+** indicates 1 or more integer characters from 0 to 9.|
+   |For **ACTION**=`remove [RECORD]`|The argument can be any non-zero string.|
 
 ### Sample runs
 
-Example of using `add` record
-```
-show blocks
-of copy / pasted runs
-of your script
-```
+---
 
-Example of using `remove` record
-```
-show blocks
-of copy / pasted runs
-of your script
-```
+- Example of using `add` record
+   ```bash
+   # Add expense
+   > ft add "McDonalds -2.50"
+   > Saved "McDonalds -2.50" to /home/joeesmithh/.finances
 
-Example of using `view` records
-```
-show blocks
-of copy / pasted runs
-of your script
-```
+   # Add income
+   > ft add "Paycheck 350.00"
+   > Saved "Paycheck 350.00" to /home/joeesmithh/.finances
+   ```
 
-Example of using `clear` records
-```
-show blocks
-of copy / pasted runs
-of your script
-```
+- Example of using `remove` record
+   ```bash
+   # Remove single record
+   > ft remove Pay
+   > Removed "Paycheck 350.00" from /home/joeesmithh/.finances
 
-Example of using `help`
-```
-show blocks
-of copy / pasted runs
-of your script
-```
+   # Remove multiple records
+   > ft remove 50
+   > Removed "McDonalds -2.50
+     Paycheck 350.00" from /home/joeesmithh/.finances
+     Last record removed! Deleted /home/joeesmithh/.finances
+   ```
+
+- Example of using `view` records
+   ```bash
+   > ft view
+   > McDonalds -2.50
+     Paycheck 350.00
+   ```
+
+- Example of using `clear` records
+   ```bash
+   > ft clear
+   > Deleted /home/joeesmithh/.finances
+   ```
+
+- Example of using `help`
+   ```
+   > ft help
+   > Usage: ft <ACTION> [RECORD]
+     This script allows the user to add, remove, view, or clear
+     finance records in the /home/joeesmithh/.finances file.
+  
+     Arguments:
+     ACTION
+              Required argument representing an action to perform on /home/joeesmithh/.finances
+              add [RECORD]    - Append RECORD to /home/joeesmithh/.finances
+                                Prompt for entry if no RECORD given
+              remove [RECORD] - Remove lines matching RECORD pattern from /home/joeesmithh/.finances
+                                Prompt for entry if no RECORD given
+              view            - View contents of /home/joeesmithh/.finances
+              clear           - Remove /home/joeesmithh/.finances file
+              help            - Output documentation
+  
+     RECORD
+              A finance record comprising a string followed by a floating-point value.
+              Optional for ACTION=add,remove
+              For <remove>, the argument can be any non-zero string
+              For <add>, the argument must be of form "<STRING> [-]N+[.N+]"
+                 [] indicates an optional field
+                 N+ indicates 1 or more integer characters [0-9]
+  
+     Examples:
+     ft add "McDonald's -2.50" - Add negative record
+     ft add "Paycheck 350"     - Add positive record
+     ft view                   - Output:
+                                         McDonald's -2.50
+                                         Paycheck 350
+     ft remove Pay             - Remove "Paycheck 350" record
+     ft remove 50              - Remove both records
+     ft add                    - Prompt for record before addition
+     ft remove                 - Prompt for record before removal
+     ft clear                  - Delete /home/joeesmithh/.finances file
+   ```
 
 ## Part 3 - PATH for all
 
