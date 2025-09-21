@@ -127,7 +127,7 @@ clear () {
 
 # Output user guide to console
 help () {
-	echo "$(user-guide)"
+	user-guide
 }
 
 # -------------------- PROGRAM -------------------- #
