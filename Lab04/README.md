@@ -67,6 +67,7 @@ of your script
 ## Extra Credit
 
 Note here *what* you did to the script for the extra credit and provide additional demonstrations or user guide updates similar to Part 2.
+- Implement deletion of empty .finances record file when the last remaining record is removed.
 
 ## Citations
 
