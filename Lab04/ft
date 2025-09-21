@@ -59,7 +59,7 @@ validate-record () {
 	while [[ -z $arg2 || ! $arg2 =~ ^.+" "+\-?[0-9][0-9]*(\.[0-9][0-9]*)?$ ]]; do
 		# Output error prompt and read new input
 		printf -v error "Invalid record!\nTry again (no quotes necessary): "
-		read -p "$error" arg2
+		read -r -p "$error" arg2
 	done
 
 	echo "$arg2"
@@ -72,7 +72,7 @@ validate-record-description () {
 	while [ -z "$arg2" ]; do
 		# Output error prompt and read new input
 		printf -v error "Empty record description!\nTry again (no quotes necessary): "
-		read -p "$error" arg2
+		read -r -p "$error" arg2
 	done
 
 	echo "$arg2"
