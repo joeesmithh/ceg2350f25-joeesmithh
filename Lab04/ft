@@ -102,8 +102,14 @@ remove () {
 		# Create string with lines of .finances not including those with record description
 		finances_no_record=$(grep -v "$record" "$save_file")
 
-		# Overwrite .finances file with new grep string
-		echo "$finances_no_record" > "$save_file"
+		# Overwrite .finances with new string if it doesn't consist of only a newline character
+		if [ -n "$finances_no_record" ]
+		then
+			echo "$finances_no_record" > "$save_file"
+		else
+			> "$save_file"
+		fi
+
 		printf "Removed \"%s\" from %s\n" "$matching_lines" "$save_path"
 	fi
 }
