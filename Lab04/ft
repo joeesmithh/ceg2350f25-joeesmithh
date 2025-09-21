@@ -101,16 +101,17 @@ remove () {
 	else
 		# Create string with lines of .finances not including those with record description
 		finances_no_record=$(grep -v "$record" "$save_file")
+		printf "Removed \"%s\" from %s\n" "$matching_lines" "$save_path"
 
 		# Overwrite .finances with new string if it doesn't consist of only a newline character
 		if [ -n "$finances_no_record" ]
 		then
 			echo "$finances_no_record" > "$save_file"
 		else
-			> "$save_file"
+			echo -n "Last record removed! "
+			clear
 		fi
 
-		printf "Removed \"%s\" from %s\n" "$matching_lines" "$save_path"
 	fi
 }
 
@@ -122,7 +123,7 @@ view () {
 # Clear all finance records
 clear () {
 	rm "$save_file"
-	echo "Removed $save_path"
+	echo "Deleted $save_path"
 }
 
 # Output user guide to console
