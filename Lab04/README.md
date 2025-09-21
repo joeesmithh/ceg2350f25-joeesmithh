@@ -58,19 +58,37 @@ This script allows the user to add, remove, view, or clear finance records in a 
    # Add income
    > ft add "Paycheck 350.00"
    > Saved "Paycheck 350.00" to /home/joeesmithh/.finances
+
+   # Without [RECORD] argument & invalid record form
+   > ft add
+   > Invalid record!
+     Try again (no quotes necessary): Burger King
+   > Invalid record!
+     Try again (no quotes necessary): Burger King -10.15
+   > Saved "Burger King -10.15" to /home/joeesmithh/.finances
    ```
 
 - Example of using `remove` record
    ```bash
    # Remove single record
-   > ft remove Pay
-   > Removed "Paycheck 350.00" from /home/joeesmithh/.finances
+   > ft remove "Burger King"
+   > Removed "Burger King -10.15" from /home/joeesmithh/.finances
 
    # Remove multiple records
    > ft remove 50
    > Removed "McDonalds -2.50
      Paycheck 350.00" from /home/joeesmithh/.finances
      Last record removed! Deleted /home/joeesmithh/.finances
+
+   # Without [RECORD] argument
+   > ft remove
+   > Empty record description!
+     Try again (no quotes necessary): Donald
+   > Removed "McDonalds -2.50" from /home/joeesmithh/.finances
+
+   # Unsuccessful removal
+   > ft remove burger
+   > Remove unsuccessful! No records matching description "burger"
    ```
 
 - Example of using `view` records
