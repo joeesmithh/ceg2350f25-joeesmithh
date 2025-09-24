@@ -147,7 +147,7 @@ This script allows the user to add, remove, view, or clear finance records in a 
 
 - Chosen PATH directory: `/usr/local/bin`
 - Link preference (hard or symbolic): **Symbolic**
-   - Justification of preference for this use case:<br>A symbolic links accomplishes the desired effect, as I don't see the need for the link to point the same inode location on the disk, but rather to the original script's path. This ensures link validity across filesystems and allows for the link to be broken if the original script needs to be deleted by the owner of the script for whatever reason.
+   - Justification of preference for this use case:<br>A symbolic link accomplishes the desired effect, as I don't see the need for the link to point the same inode location on the disk, but rather to the original script's path. This ensures link validity across filesystems and allows for the link to be broken if the original script needs to be deleted by the owner of the script for whatever reason.
 - Command to create link: `sudo ln -s /home/ubuntu/repos/ceg2350f25-joeesmithh/Lab04/ft /usr/local/bin/ft`
 - Notes about permissions modified: `chmod 755 ft` to allow owner rwx, group rx, and others rx permissions, and `chmod o+x /home/ubuntu` to allow others to execute the file within **ubuntu**'s home directory.
 - How you tested that you can run `ft` from anywhere on filesystem: I ran all commands for `ft` successfully from the owner's home and root directories.
@@ -156,7 +156,6 @@ This script allows the user to add, remove, view, or clear finance records in a 
 ## Extra Credit
 
 Note here *what* you did to the script for the extra credit and provide additional demonstrations or user guide updates similar to Part 2.
-- Implement deletion of empty .finances record file when the last remaining record is removed.
 
 ## Citations
 
