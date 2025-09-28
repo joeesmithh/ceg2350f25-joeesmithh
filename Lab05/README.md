@@ -45,5 +45,7 @@ Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab05/Inst
 5. `awk '{ gsub("Sofa","Couch"); print }' sales.txt > updated-sales.txt`: replaces all occurrences of the word "Sofa" with "Couch," saving the changes to "updated-sales.txt"
 
 ## Citations
-
-To add citations, provide the site and a summary of what it assisted you with.  If generative AI was used, include which generative AI system was used and what prompt(s) you fed it.  Generative AI may not write your script for you, only assist with component and how to type questions.
+[Grep Command in Linux](https://linuxize.com/post/how-to-use-grep-command-to-search-files-in-linux/)<br>
+[How to Use sed to Find and Replace String in Files](https://linuxize.com/post/how-to-use-sed-to-find-and-replace-string-in-files/)<br>
+[Awk Command in Linux with Examples](https://linuxize.com/post/awk-command/)<br>
+[Awk Find And Replace Fields Values](https://www.cyberciti.biz/faq/awk-find-and-replace-fields-values/)
