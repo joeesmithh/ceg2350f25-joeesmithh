@@ -1,7 +1,7 @@
 ## Lab 05
 
-- Name:
-- Email: 
+- Name: Joseph Smith
+- Email: smith.3289@wright.edu
 
 Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab05/Instructions.html
 
