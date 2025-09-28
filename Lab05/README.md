@@ -18,7 +18,7 @@ Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab05/Inst
 3. How many logs have a client IP that contains `1` in the third octet?
     - `grep` command: `grep -P "^\d+\.\d+\.\d*1" access.log | wc"`
     - Number of matched lines: **83**
-    - Explanation of pattern: `^\d+\.\d+\.\d*1` matches zero or more digits before the character "1" preceeded by 2 instances of one or more period-separated digits from the start of a line.
+    - Explanation of pattern: `^\d+\.\d+\.\d*1` matches zero or more digits before the character "1" preceded by 2 instances of one or more period-separated digits from the start of a line.
 4. How many logs contain `GET` requests to look for a page that begins with `c`?
     - `grep` command: `grep -E "GET \/c" access.log | wc`
     - Number of matched lines: **10**
@@ -31,7 +31,7 @@ Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab05/Inst
 ## Part 2 - sed
 
 1. `sed -i 's/<\/.*>//g' sedfile.md`: remove all HTML closing tags.
-2. `sed -i 's/^.*<li>/ - /g' sedfile.md`: replace all HTML list items with mardown bullets.
+2. `sed -i 's/^.*<li>/ - /g' sedfile.md`: replace all HTML list items with markdown bullets.
 3. `sed -i '/<ul>/d' sedfile.md` and `sed -i '/^<html>/d' sedfile.md`: delete lines with `<html>` and `<ul>` tags.
 4. `sed -i 's/<h1>/# /g' sedfile.md` and `sed -i 's/<h2>/## /g' sedfile.md`: replace all HTML header tags with markdown equivalent.
 5. `sed -i 's/Batches/Matches/g' sedfile.md`: replace all instances of the word "Batches" with "Matches."
