@@ -8,25 +8,25 @@ Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab05/Inst
 ## Part 1 - grep
 
 1. How many logs use a client IP that starts with `192`?
-    - `grep` command: 
-    - Number of matched lines: 
-    - Explanation of pattern:
+    - `grep` command: `grep -E "^192" access.log | wc`
+    - Number of matched lines: **28**
+    - Explanation of pattern: `^192` matches the characters "192" from the start of a line.
 2. How many logs request page `/faq`?
-    - `grep` command: 
-    - Number of matched lines: 
-    - Explanation of pattern:
+    - `grep` command: `grep -E "\/faq\b" access.log`
+    - Number of matched lines: **2**
+    - Explanation of pattern: `\/faq\b` matches any instance of the characters "/faq" appearing at the end of a word.
 3. How many logs have a client IP that contains `1` in the third octet?
-    - `grep` command: 
-    - Number of matched lines: 
-    - Explanation of pattern:
+    - `grep` command: `grep -P "^\d+\.\d+\.\d*1" access.log | wc"`
+    - Number of matched lines: **83**
+    - Explanation of pattern: `^\d+\.\d+\.\d*1` matches zero or more digits before the character "1" preceeded by 2 instances of one or more period-separated digits from the start of a line.
 4. How many logs contain `GET` requests to look for a page that begins with `c`?
-    - `grep` command: 
-    - Number of matched lines: 
-    - Explanation of pattern:
+    - `grep` command: `grep -E "GET \/c" access.log | wc`
+    - Number of matched lines: **10**
+    - Explanation of pattern: `GET \/c` matches all occurrences of character pattern "GET /c"
 5. How many logs contains request between 1:20 PM and 1:30 PM?
-    - `grep` command: 
-    - Number of matched lines: 
-    - Explanation of pattern:
+    - `grep` command: `grep -P "20\d\d:13:2" access.log | wc`
+    - Number of matched lines: **20**
+    - Explanation of pattern: `20\d\d:13:2` matches all occurrences of characters "20" followed by two digits, a colon, the characters "13", another colon, and the character "2," i.e., any request from 1:20 PM to 1:29 PM in the 21st century.
 
 ## Part 2 - sed
 
