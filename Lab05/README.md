@@ -30,12 +30,11 @@ Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab05/Inst
 
 ## Part 2 - sed
 
-1. `place your sed commands between backtick characters`
-2. `sed command goes here`
-3. `sed command goes here`
-4. `sed command goes here`
-5. `sed command goes here`
-6. `sed command goes here`
+1. `sed -i 's/<\/.*>//g' sedfile.md`: remove all HTML closing tags.
+2. `sed -i 's/^.*<li>/ - /g' sedfile.md`: replace all HTML list items with mardown bullets.
+3. `sed -i '/<ul>/d' sedfile.md` and `sed -i '/^<html>/d' sedfile.md`: delete lines with `<html>` and `<ul>` tags.
+4. `sed -i 's/<h1>/# /g' sedfile.md` and `sed -i 's/<h2>/## /g' sedfile.md`: replace all HTML header tags with markdown equivalent.
+5. `sed -i 's/Batches/Matches/g' sedfile.md`: replace all instances of the word "Batches" with "Matches."
 
 ## Part 3 - awk
 
