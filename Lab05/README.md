@@ -38,11 +38,11 @@ Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab05/Inst
 
 ## Part 3 - awk
 
-1. `awk command goes here`
-2. `awk command goes here`
-3. `awk command goes here`
-4. `awk command goes here`
-5. `awk command goes here`
+1. `awk '/^2024-02/ { print }' sales.txt`: prints only lines for sales made in February 2024
+2. `awk '$5 >= 100 { print $2 }' sales.txt`: prints only the product name of products with a unit price of 100+
+3. `awk '$2 ~ /TV/ { print $2, $4 }' sales.txt`: prints the product name and quantity sold of products with "TV" in the product name
+4. `awk '$3 ~ /Kitchen/ { sum+=$6 } END { print "Sum:", sum }' sales.txt`: sums and prints the total revenue of products with "Kitchen" in the Category name
+5. `awk '{ gsub("Sofa","Couch"); print }' sales.txt > updated-sales.txt`: replaces all occurrences of the word "Sofa" with "Couch," saving the changes to "updated-sales.txt"
 
 ## Citations
 
