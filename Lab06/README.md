@@ -8,12 +8,15 @@ Instructions for this lab: https://pattonsgirl.github.io/CEG2350/Labs/Lab06/Inst
 ## Part 1 - bash aliases
 
 It is important that the following is added to or exists in the user's `.bashrc` file
-```
-section related to `.bash_aliases` found in `.bashrc`
+```bash
+# section related to `.bash_aliases` found in `.bashrc`
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 ```
 
 What this section does:
-> explanation here
+> This .bashrc field first checks if .bash_aliases exists, and if it does it sources and executes all of commands in the file with either a new Bash shell session or when the `source` command is run on .bashrc.
 
 Make sure you copied your `.bash_aliases` file to your GitHub repository.
 
