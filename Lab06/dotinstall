@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 alias_file=".bash_aliases"
-alias_path="$HOME/$alias_file"
+alias_path="$(pwd)/$alias_file"
+sym_path="$HOME/$alias_file"
 
 printHelp() {
 	echo "Usage: dotinstall [-OPTION] [ARG]"
@@ -26,13 +27,13 @@ promptYesNo () {
 }
 
 formSymlink() {
-	(ln -s "$(pwd)/$alias_file" "$alias_path")
-	echo "Created symlink $alias_path"
+	(ln -s $alias_path "$sym_path")
+	echo "Created symlink $sym_path"
 }
 
 createSymlink () {
 	# If .bash_aliases exists in home directory
-	if [[ -e "$alias_path" ]]; then
+	if [[ -e "$sym_path" ]]; then
 
 		# Prompt for overwrite
 		echo "$alias_file already exists! Overwrite?"
@@ -49,16 +50,32 @@ createSymlink () {
 
 breakSymlink() {
 	# Force delete to avoid error output
-	(rm -f "$alias_path")
-	echo "Removed symlink $alias_path"
+	(rm -f "$sym_path")
+	echo "Removed symlink $sym_path"
+}
+
+validateAlias () {
+	local string=""
+	if [[ "$1" =~ ^alias" ".+\=\".+\"$ ]]; then
+		string="$1"
+	fi
+
+	echo "$string" # Return empty string if invalid
 }
 
 addAlias () {
-	return 2
+
+	string="$(validateAlias "$1")"
+	if [[ -n $string ]]; then
+		# TODO: check whether an alias with the same name is already present in .bash_aliases
+		(echo "$string" >> "$alias_path")
+	else
+		echo 'Invalid alias declaration of form "alias [name]="[command]"'
+	fi
 }
 
 removeAlias() {
-	return 3
+	echo $1
 }
 
 while getopts ":sda:r:" opt; do
