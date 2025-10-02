@@ -7,3 +7,30 @@ printHelp() {
   	echo "  -a append - adds a new alias to .bash_aliases file"
   	echo "  -r remove - removes an alias from .bash_aliases file"
 }
+
+formSymlink () {
+	return 0
+}
+
+breakSymlink() {
+	return 1
+}
+
+addAlias () {
+	return 2
+}
+
+removeAlias() {
+	return 3
+}
+
+while getopts ":sda:r:" opt; do
+	case $opt in
+		s) formSymlink ;;
+		d) breakSymlink ;;
+		a) addAlias "$OPTARG" ;;
+		r) removeAlias "$OPTARG";;
+		:) echo "An argument must follow option -$OPTARG"; printHelp;;
+		\?) echo "Option not supported!"; printHelp;;
+	esac
+done
