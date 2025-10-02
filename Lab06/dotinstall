@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+alias_file=".bash_aliases"
+alias_path="$HOME/$alias_file"
+
 printHelp() {
 	echo "Usage: dotinstall [-OPTION] [ARG]"
   	echo "  -s setup - attempts to create a symbolic link .bash_aliases file to user's home directory"
@@ -8,25 +11,56 @@ printHelp() {
   	echo "  -r remove - removes an alias from .bash_aliases file"
 }
 
-formSymlink () {
-	return 0
+reloadPrompt() {
+	printf "User should reload the shell with 'source ~/.bashrc'\n"
+}
+
+promptYesNo () {
+	read -p "Input (Y/N): " choice
+	while [[ ! $choice =~ [yYnN] ]]; do
+		printf -v error "Invalid option!"
+		read -p "$error Input (Y/N): " choice
+	done
+
+	echo "$choice"
+}
+
+formSymlink() {
+	(ln -s "$(pwd)/$alias_file" "$alias_path")
+	echo "Created symlink $alias_path"
+	reloadPrompt
+}
+
+createSymlink () {
+	# If .bash_aliases exists in home directory
+	if [[ -e "$alias_path" ]]; then
+
+		# Prompt for overwrite
+		echo "$alias_file already exists! Overwrite?"
+		if [[ "$(promptYesNo)" =~ [yY] ]]; then
+			(rm "$alias_path") 	# Remove old link
+			formSymlink			# Form new link
+		fi
+	else
+		formSymlink
+	fi
 }
 
 breakSymlink() {
-	return 1
+	reloadPrompt
 }
 
 addAlias () {
-	return 2
+	reloadPrompt
 }
 
 removeAlias() {
-	return 3
+	reloadPrompt
 }
 
 while getopts ":sda:r:" opt; do
 	case $opt in
-		s) formSymlink ;;
+		s) createSymlink ;;
 		d) breakSymlink ;;
 		a) addAlias "$OPTARG" ;;
 		r) removeAlias "$OPTARG";;
