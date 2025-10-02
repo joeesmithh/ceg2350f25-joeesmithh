@@ -28,7 +28,6 @@ promptYesNo () {
 formSymlink() {
 	(ln -s "$(pwd)/$alias_file" "$alias_path")
 	echo "Created symlink $alias_path"
-	reloadPrompt
 }
 
 createSymlink () {
@@ -38,24 +37,28 @@ createSymlink () {
 		# Prompt for overwrite
 		echo "$alias_file already exists! Overwrite?"
 		if [[ "$(promptYesNo)" =~ [yY] ]]; then
-			(rm "$alias_path") 	# Remove old link
-			formSymlink			# Form new link
+			breakSymlink 	# Remove old link
+			formSymlink		# Form new link
+			reloadPrompt
 		fi
 	else
 		formSymlink
+		reloadPrompt
 	fi
 }
 
 breakSymlink() {
-	reloadPrompt
+	# Force delete to avoid error output
+	(rm -f "$alias_path")
+	echo "Removed symlink $alias_path"
 }
 
 addAlias () {
-	reloadPrompt
+	return 2
 }
 
 removeAlias() {
-	reloadPrompt
+	return 3
 }
 
 while getopts ":sda:r:" opt; do
