@@ -36,7 +36,7 @@ createSymlink () {
 	if [[ -e "$sym_path" ]]; then
 
 		# Prompt for overwrite
-		echo "$alias_file already exists! Overwrite?"
+		printf "%s" "$alias_file already exists! Overwrite? "
 		if [[ "$(promptYesNo)" =~ [yY] ]]; then
 			breakSymlink 	# Remove old link
 			formSymlink		# Form new link
