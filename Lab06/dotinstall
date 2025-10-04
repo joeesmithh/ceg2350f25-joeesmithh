@@ -103,6 +103,7 @@ addAlias () {
 		if [[ -z $from_file ]]; then
 			(echo "$string" >> "$alias_path")
 			echo "Alias \"$name\" added to $alias_file!"
+			reloadPrompt
 		else
 			echo "Alias \"$name\" is already in $alias_file!"
 		fi
@@ -120,6 +121,7 @@ removeAlias() {
 	if [[ -n $from_file ]]; then
 		(sed -i -E "/alias $1=/d" "$alias_path")
 		echo "Alias \"$1\" removed from $alias_file!"
+		reloadPrompt
 	else
 		echo "Alias \"$1\" not found in $alias_file!"
 	fi
@@ -131,9 +133,9 @@ no_args="true"
 # Evaluate options
 while getopts ":sda:r:" opt; do
 	case $opt in
-		s) createSymlink ;;
-		d) breakSymlink ;;
-		a) addAlias "$OPTARG" ;;
+		s) createSymlink;;
+		d) breakSymlink;;
+		a) addAlias "$OPTARG";;
 		r) removeAlias "$OPTARG";;
 		:) echo "An argument must follow option -$OPTARG"; printHelp;;
 		\?) echo "Option not supported!"; printHelp;;
