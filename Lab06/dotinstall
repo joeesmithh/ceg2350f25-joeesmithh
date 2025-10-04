@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 alias_file=".bash_aliases"
-alias_path="$(pwd)/$alias_file"
+alias_path="$PWD/$alias_file"
 sym_path="$HOME/$alias_file"
+
+echo "$alias_path"
 
 printHelp() {
 	echo "Usage: dotinstall [-OPTION] [ARG]"
