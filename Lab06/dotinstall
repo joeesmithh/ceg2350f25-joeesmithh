@@ -54,6 +54,9 @@ breakSymlink() {
 	echo "Removed symlink $sym_path"
 }
 
+# Validate whether an alias declaration string is valid
+# 	param $1: the string to evaluate
+# 	returns: the input string if valid, empty string otherwise
 validateAlias () {
 	local string=""
 	if [[ $1 =~ ^alias[[:space:]]+[[:alnum:]]+\=\".+\"$ ]]; then
@@ -63,13 +66,37 @@ validateAlias () {
 	echo "$string" # Return empty string if invalid
 }
 
+# Extract the raw alias name given an alias declaration string
+# 	param $1: the full alias declaration string
+# 	returns: the raw alias name, empty string otherwise
+extractAliasName () {
+	(echo "$1" | grep -Po '(?<=alias )\w+')
+}
+
+# Check whether an alias with a name exists in .bash_aliases
+# 	param $1: the alias name
+# 	returns: the full alias declaration string if it exists, empty string otherwise
+findFileAlias () {
+	(grep "alias $1=" "$alias_path")
+}
+
 addAlias () {
 
-	string="$(validateAlias "$1")"
+	local string="$(validateAlias "$1")"
+
+	# Consider addition of alias if valid alias declaration string
 	if [[ -n $string ]]; then
-		# TODO: check whether an alias with the same name is already present in .bash_aliases
-		echo "$string"
-		(echo "$string" >> "$alias_path")
+	
+		local name="$(extractAliasName "$string")"
+		local from_file="$(findFileAlias "$name")"
+
+		# Add to .bash_aliases if not already present
+		if [[ -z $from_file ]]; then
+			(echo "$string" >> "$alias_path")
+			echo "Alias \"$name\" added to $alias_file!"
+		else
+			echo "Alias \"$name\" is already in $alias_file!"
+		fi
 	else
 		echo 'Invalid alias declaration of form "alias [name]="[command]"'
 	fi
