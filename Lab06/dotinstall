@@ -102,8 +102,18 @@ addAlias () {
 	fi
 }
 
+# Remove alias given an alias name from .bash_aliases
+# 	param $1: the name of the alias to remove
 removeAlias() {
-	echo $1
+	local from_file="$(findFileAlias "$1")"
+
+	# Remove alias from .bash_aliases if present
+	if [[ -n $from_file ]]; then
+		(sed -i -E "/alias $1=/d" "$alias_path")
+		echo "Alias \"$1\" removed from $alias_file!"
+	else
+		echo "Alias \"$1\" not found in $alias_file!"
+	fi
 }
 
 
