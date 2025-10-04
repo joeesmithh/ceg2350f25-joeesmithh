@@ -4,8 +4,6 @@ alias_file=".bash_aliases"
 alias_path="$PWD/$alias_file"
 sym_path="$HOME/$alias_file"
 
-echo "$alias_path"
-
 printHelp() {
 	echo "Usage: dotinstall [-OPTION] [ARG]"
   	echo "  -s setup - attempts to create a symbolic link .bash_aliases file to user's home directory"
@@ -80,6 +78,10 @@ removeAlias() {
 	echo $1
 }
 
+
+no_args="true"
+
+# Evaluate options
 while getopts ":sda:r:" opt; do
 	case $opt in
 		s) createSymlink ;;
@@ -89,4 +91,11 @@ while getopts ":sda:r:" opt; do
 		:) echo "An argument must follow option -$OPTARG"; printHelp;;
 		\?) echo "Option not supported!"; printHelp;;
 	esac
+	no_args="false"
 done
+
+# Output command usage if no args
+if [[ "$no_args" == "true" ]]; then
+	echo "No options specified!"
+	printHelp
+fi
