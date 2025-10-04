@@ -16,7 +16,7 @@ printHelp() {
 
 # Output .bashrc source prompt
 reloadPrompt() {
-	printf "User should reload the shell with 'source ~/.bashrc'\n"
+	printf "User should reload the shell with %s'source ~/.bashrc'\n" "$1"
 }
 
 # Validate 'yes' or 'no' user input
@@ -121,7 +121,7 @@ removeAlias() {
 	if [[ -n $from_file ]]; then
 		(sed -i -E "/alias $1=/d" "$alias_path")
 		echo "Alias \"$1\" removed from $alias_file!"
-		reloadPrompt
+		reloadPrompt "'unalias -a' then "
 	else
 		echo "Alias \"$1\" not found in $alias_file!"
 	fi
