@@ -33,27 +33,91 @@ your GitHub repository
 
 ## Part 4 - `dotinstall` Usage Guide
 
-THIS SHOULD ALL BE REMOVED AND REPLACED WITH ONLY YOUR USAGE GUIDE TEXT
+### Usage
+---
+`bash dotinstall [-OPTION] [ARG]`
 
-Examples of script usage and output. This should be enough info that  
-you can hand this and the script to someone not in this course and they  
-would be able to understand what your script does and how to use it.
+### Options
+---
+Specifies which action to perform on a *.bash_aliases* file in the same directory as this script.
 
-Use good markdown so that this documentation is pretty and clean on GitHub.
+   |Option|Description|
+   |-----|-----|
+   |`-h`|Output usage guide to console|
+   |`-s`|Create a symbolic link in user's home directory to a *.bash_aliases* file in the same directory as this script|
+   |`-d`|Removes the symbolic link in user's home directory to a *.bash_aliases* file in the same directory as this script|
+   |`-a [ARG]`|Adds **ARG** of form `alias [name]="[command]"` to *.bash_aliases* file in the same directory as this script if an alias of the same name is not already present|
+   |`-r [ARG]`|If present, removes **ARG** of form `alias [name]="[command]"` from *.bash_aliases* file in the same directory as this script|
 
 ### `.bash_aliases`
-Describe your script in plain English, nothing too technical.  Think about this as describing what you made over the dinner table.
+***.bash_aliases*** is traditionally a file in the user's home directory which contains lines of form `alias [name]=[command]`, where sourcing `~/.bashrc` or starting a new bash terminal session will enable the aliases and allow user's of the bash terminal to simply type **name** to run **command**. With ***dotinstall***, the user can manipulate their portable ***.bash_aliases*** file from within the script folder and see their changes applied system-wide.
 
 ### `dotinstall`
-
-Describe your script in plain English, nothing too technical.  Think about this as describing what you made over the dinner table.
+The ***dotinstall*** script allows users to perform actions on a ***.bash_aliases*** file within the same directory as ***dotinstall***, such as enabling its visibility to the bash terminal by creating a symbolic link to it in the user's home directory, and adding aliases to the file which can be used to run complex commands with a single word. With this functionality, the user is spared the complicated process of adding aliases to their .bashrc file, making their alias definitions modular and portable.
 
 ### Examples
 
-```
-By using the triple quotes, you can enclose a block of code
-And code blocks look very professional
-```
+---
+
+- `-h` usage example:
+   ```
+	$ bash dotinstall -h
+	  Usage: dotinstall [-OPTION] [ARG]
+  	  -s setup - attempts to create a symbolic link .bash_aliases file to users home directory
+  	  -d disconnect - removes symbolic link
+	  -a append - adds a new alias to .bash_aliases file
+	  -r remove - removes an alias from .bash_aliases file
+   ```
+
+- `-s` usage example:
+   ```
+   $ bash dotinstall -s
+     Created symlink /home/joeesmithh/.bash_aliases
+     User should reload the shell with 'source ~/.bashrc'
+   --------------------------------------------------------------
+   $ bash dotinstall -s
+     .bash_aliases already exists! Overwrite? Input (Y/N): y
+     Removed symlink /home/joeesmithh/.bash_aliases
+     Created symlink /home/joeesmithh/.bash_aliases
+     User should reload the shell with 'source ~/.bashrc'
+   ```
+
+- `-d` usage example:
+   ```
+   $ bash dotinstall -d
+     Removed symlink /home/joeesmithh/.bash_aliases
+     User should reload the shell with 'unalias -a' then 'source ~/.bashrc'
+   ```
+
+- `-a [ARG]` usage example:
+   ```
+   $ bash dotinstall -a 'alias h="echo \"Hello there!\""'
+     Alias "h" added to .bash_aliases!
+     User should reload the shell with 'source ~/.bashrc'
+   $ source ~/.bashrc
+   $ h
+   $ Hello there!
+   --------------------------------------------------------------
+   $ bash dotinstall -a 'alias h="echo \"Hello there!\""'
+     Alias "h" is already in .bash_aliases!
+   --------------------------------------------------------------
+   $ bash dotinstall -a 'alias hi =echo Hi!'
+     Invalid alias declaration of form "alias [name]="[command]"
+   ```
+
+- `r [ARG]` usage example:
+   ```
+   $ bash dotinstall -r h
+     Alias "h" removed from .bash_aliases!
+     User should reload the shell with 'unalias -a' then 'source ~/.bashrc'
+   $ unalias -a
+   $ source ~/.bashrc
+   $ h
+   $ h: command not found
+   --------------------------------------------------------------
+   $ bash dotinstall -r h
+     Alias "h" not found in .bash_aliases!
+   ```
 
 ## Citations
 
