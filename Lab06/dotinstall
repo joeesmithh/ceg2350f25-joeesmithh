@@ -134,7 +134,7 @@ no_args="true"
 while getopts ":sda:r:" opt; do
 	case $opt in
 		s) createSymlink;;
-		d) breakSymlink;;
+		d) breakSymlink; reloadPrompt "'unalias -a' then ";;
 		a) addAlias "$OPTARG";;
 		r) removeAlias "$OPTARG";;
 		:) echo "An argument must follow option -$OPTARG"; printHelp;;
