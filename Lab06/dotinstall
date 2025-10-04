@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+# Global variables
 alias_file=".bash_aliases"
 alias_path="$PWD/$alias_file"
 sym_path="$HOME/$alias_file"
 
+# Output command usage
 printHelp() {
 	echo "Usage: dotinstall [-OPTION] [ARG]"
   	echo "  -s setup - attempts to create a symbolic link .bash_aliases file to user's home directory"
@@ -12,10 +14,12 @@ printHelp() {
   	echo "  -r remove - removes an alias from .bash_aliases file"
 }
 
+# Output .bashrc source prompt
 reloadPrompt() {
 	printf "User should reload the shell with 'source ~/.bashrc'\n"
 }
 
+# Validate 'yes' or 'no' user input
 promptYesNo () {
 	read -p "Input (Y/N): " choice
 	while [[ ! $choice =~ [yYnN] ]]; do
@@ -26,11 +30,13 @@ promptYesNo () {
 	echo "$choice"
 }
 
+# Establish .bash_aliases symbolic link in user home
 formSymlink() {
 	(ln -s $alias_path "$sym_path")
 	echo "Created symlink $sym_path"
 }
 
+# Create .bash_aliases symbolic link in user home
 createSymlink () {
 	# If .bash_aliases exists in home directory
 	if [[ -e "$sym_path" ]]; then
@@ -48,6 +54,7 @@ createSymlink () {
 	fi
 }
 
+# Remove .bash_aliases symbolic link from user home
 breakSymlink() {
 	# Force delete to avoid error output
 	(rm -f "$sym_path")
@@ -80,6 +87,8 @@ findFileAlias () {
 	(grep "alias $1=" "$alias_path")
 }
 
+# Add an alias to .bash_aliases given an alias declaration string
+# 	param $1: the full alias declaration string
 addAlias () {
 
 	local string="$(validateAlias "$1")"
@@ -116,7 +125,7 @@ removeAlias() {
 	fi
 }
 
-
+# Assume no arguments before getopts
 no_args="true"
 
 # Evaluate options
