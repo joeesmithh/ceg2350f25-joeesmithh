@@ -27,9 +27,9 @@ your GitHub repository
 
 ## Part 3 - Retrospective
 
-1.
-2.
-3.
+1. **getopts** is a powerful way to evaluate options passed to your script, allowing one to validate whether an argument was coupled with the option or if an unsupported option was passed.
+2. One part I got stuck on was the regex pattern used to validate the user's alias declaration string. I ended up having to use `[[:space:]]` and `[[:alnum:]]` in certain portions of the pattern, even though `\s`, `' '`, and `\w` worked fine in *regex101*.
+3. The feature I would most like to add is allowing the user to simply provide an alias name as an argument and then the alias command for the second argument rather than relying on them to provide a correctly formatted alias declaration string.
 
 ## Part 4 - `dotinstall` Usage Guide
 
