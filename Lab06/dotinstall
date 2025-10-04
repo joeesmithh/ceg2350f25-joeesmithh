@@ -56,7 +56,7 @@ breakSymlink() {
 
 validateAlias () {
 	local string=""
-	if [[ "$1" =~ ^alias" ".+\=\".+\"$ ]]; then
+	if [[ $1 =~ ^alias[[:space:]]+[[:alnum:]]+\=\".+\"$ ]]; then
 		string="$1"
 	fi
 
@@ -68,6 +68,7 @@ addAlias () {
 	string="$(validateAlias "$1")"
 	if [[ -n $string ]]; then
 		# TODO: check whether an alias with the same name is already present in .bash_aliases
+		echo "$string"
 		(echo "$string" >> "$alias_path")
 	else
 		echo 'Invalid alias declaration of form "alias [name]="[command]"'
@@ -94,7 +95,7 @@ while getopts ":sda:r:" opt; do
 	no_args="false"
 done
 
-# Output command usage if no args
+# Output error message and command usage if no args passed
 if [[ "$no_args" == "true" ]]; then
 	echo "No options specified!"
 	printHelp
